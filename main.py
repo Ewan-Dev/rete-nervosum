@@ -1,10 +1,11 @@
 import numpy as np
+from tensors import Tensor
 
 x = np.array([1,2,3,4])
 y_training = np.array([3,6,9,12])
 
 # Random number
-w = np.random.randn()
+w = Tensor(np.random.randn())
 
 
 # Finds the error/loss
@@ -24,8 +25,8 @@ def grad(y_training, y_pred, x):
 lr = 0.1
 
 for i in range(50):
-    y_pred = w * x
+    y_pred = w.data * x
     gradient = grad(y_training, y_pred, x) # Find gradient
-    w -= lr * gradient # Update parameter
+    w.data -= lr * gradient # Update parameter
     loss = mse(y_training, y_pred) # Finds loss; how fare 
-    print(f"Step {i}: w={w:.3f}, loss={loss:.3f}")
+    print(f"Step {i}: w={w.data:.3f}, loss={loss:.3f}")
