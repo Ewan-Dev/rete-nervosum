@@ -25,8 +25,8 @@ def grad(y_training, y_pred, x):
 lr = 0.1
 
 for i in range(50):
-    y_pred = w.data * x
+    y_pred = w * x
     gradient = grad(y_training, y_pred, x) # Find gradient
-    w.data -= lr * gradient # Update parameter
+    w -= lr * gradient # Update parameter
     loss = mse(y_training, y_pred) # Finds loss; how fare 
-    print(f"Step {i}: w={w.data:.3f}, loss={loss:.3f}")
+    print(f"Step {i}: w={w:.3f}, loss={loss:.3f}")
